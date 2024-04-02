@@ -121,12 +121,43 @@ a {
     color: white;
 }
 
-/* #logout-btn{
+/* ------------logout------------- */
+#logout-btn-container{
+    /* visibility: hidden; */
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: absolute;
-    bottom: 1.2rem;
-    right: 15rem;
-    padding: 0.4rem 1rem;
-} */
+    right: 1rem;
+    top: 2.8rem;
+    height: 5rem;
+    width: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    visibility: hidden;
+    border-radius: 5px;
+
+}
+
+.logout-btn-before, .my-account{
+    /* background-color: red; */
+    width: 86%;
+    padding: 0.5rem 0rem;
+    /* position: absolute; */
+    padding-left: 1rem;
+    cursor: pointer; 
+}
+
+.logout-btn-before:hover, .my-account:hover{
+    background-color: #EEF4FF;
+}
+
+.logout-btn-before{
+    border: 1px solid rgba(128, 128, 128, 0.536);
+    color: rgba(255, 85, 0, 0.734);
+}
+
 
 #nav-bottom-container {
     display: flex;
@@ -270,9 +301,9 @@ a {
 .hide-address-container {
     width: 0px;
     height: 100vh;
-    /* position: fixed;
+    position: fixed;
     top: 0;
-    left: 0; */
+    left: 0;
 }
 
 .show-address-container {

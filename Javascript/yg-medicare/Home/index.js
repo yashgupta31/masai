@@ -885,6 +885,38 @@ window.addEventListener('scroll', function () {
     }
 });
 
+// -----------------------------------------Logout--------------------------------------------------
+let loginUser2= JSON.parse(localStorage.getItem('login'))
+
+let showLogoutBtn=()=>{
+    document.getElementById('nav-login-link').addEventListener('mouseover', ()=>{
+
+        document.querySelector('#logout-btn-container').style.visibility= 'visible';
+        document.querySelector('#logout-btn-container').addEventListener('mouseover', ()=>{
+            document.querySelector('#logout-btn-container').style.visibility= 'visible';
+        })
+    
+    })
+    
+    document.getElementById('nav-login-link').addEventListener('mouseleave', ()=>{
+        document.querySelector('#logout-btn-container').style.visibility= 'hidden';
+        document.querySelector('#logout-btn-container').addEventListener('mouseleave', ()=>{
+            document.querySelector('#logout-btn-container').style.visibility= 'hidden';
+        })  
+    })
+    
+}
+
+if (loginUser2 && loginUser2.length == 1) {
+    showLogoutBtn();
+}
+
+document.getElementById('logout-btn').addEventListener('click', ()=>{
+    loginUser2.splice(0, loginUser2.length)
+    localStorage.setItem('login', JSON.stringify(loginUser2))
+    window.location.href= './index.html'
+})
+
 // ------------------------------send all products to localStorage----------------------------------
 
 let allData= JSON.parse(localStorage.getItem('allProduct'))|| {};
@@ -1065,6 +1097,7 @@ if(loginUser.length==1){
     document.getElementById('nav-login-link').innerText= loginUser[0].name;
     document.getElementById('nav-login-link').href=''
     
+    
 }else{
     document.getElementById('nav-login-link').innerText= 'login';
 }
@@ -1079,9 +1112,10 @@ if(loginUser.length==0){
             
 //         }else{
 //             window.location.href= 'signup.html' 
+//             alert('Please signup/login')
 //         }
         
-//     }, 20000)
+//     }, 5000)
 // }
 
 // ---------------------------------------Book lab test-----------------------------------

@@ -15,7 +15,7 @@ document.getElementById('signup-right-container').addEventListener('submit', (e)
     alert(`signup successfull ${name}`)
     setTimeout(()=>{
         window.location.href = './login.html';
-    }, 2000)
+    }, 400)
     
 })
 

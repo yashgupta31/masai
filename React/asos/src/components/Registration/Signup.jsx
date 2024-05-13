@@ -15,6 +15,7 @@ const Signup = () => {
   let navigate= useNavigate()
 
   let signupArr= JSON.parse(localStorage.getItem('asos-signup'))||[];
+  console.log(signupArr)
 
   let handleSubmit=(e)=>{
     e.preventDefault();
@@ -27,23 +28,45 @@ const Signup = () => {
     //   name: name,
     //   password: password
     // }
+// -----------------
+    // for(let i=0; i<signupArr.length; i++){
+    //   if(signupArr[i].gmail === signup.gmail){
+    //     toast({
+    //       title: 'User Already Exist',
+    //       // description: "We've created your account for you.",
+    //       status: 'error',
+    //       duration: 2000,
+    //       isClosable: true,
+    //     })
+    //     break;
+    //   }else{
+    //     signupArr= [...signupArr, signup]
 
-    for(let i=0; i<signupArr.length; i++){
-      if(signupArr[i].gmail === signup.gmail){
-        toast({
-          title: 'User Already Exist',
-          // description: "We've created your account for you.",
-          status: 'error',
-          duration: 2000,
-          isClosable: true,
-        })
-        break;
-      }else{
-        signupArr= [...signupArr, signup]
 
+    // localStorage.setItem('asos-signup', JSON.stringify(signupArr))
 
+    // toast({
+    //   title: 'Signup Successfull!',
+    //   // description: "We've created your account for you.",
+    //   status: 'success',
+    //   duration: 2000,
+    //   isClosable: true,
+    // })
+
+    // setTimeout(()=>{
+    //   navigate('/login')
+    // }, 2000)
+
+    
+    // break;
+    //   }
+    // }
+    
+
+    // alert('signup successful')
+
+    signupArr= [...signupArr, signup]
     localStorage.setItem('asos-signup', JSON.stringify(signupArr))
-
     toast({
       title: 'Signup Successfull!',
       // description: "We've created your account for you.",
@@ -51,18 +74,7 @@ const Signup = () => {
       duration: 2000,
       isClosable: true,
     })
-
-    setTimeout(()=>{
-      navigate('/login')
-    }, 2000)
-
     
-    break;
-      }
-    }
-    
-
-    // alert('signup successful')
 
     setSignup({gmail:'',
     name: '',

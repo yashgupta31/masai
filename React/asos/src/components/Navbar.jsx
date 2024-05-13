@@ -47,12 +47,14 @@ const Navbar = () => {
                   
 
                   {
-                    loginArr.length==1? (<><NavLink style={{ fontSize: '1rem' }}>Hi, {loginArr[0].name}</NavLink>
+                    loginArr? (<><NavLink style={{ fontSize: '1rem' }}>Hi, {loginArr[0].name}</NavLink>
                     <NavLink style={{ fontSize: '1rem' }}>Logout</NavLink></>) 
                     : (
                       <><NavLink style={{ fontSize: '1rem' }} to={'/login'}>Sign In</NavLink>
                     <NavLink style={{ fontSize: '1rem' }} to={'/signup'}>Join</NavLink></>)
                   }
+
+
                 </Box>
                 {/* <Button w={'100%'} colorScheme='gray'>Cancel</Button>
                 <Button w={'100%'} colorScheme='gray'>Cancel</Button>

@@ -1,14 +1,29 @@
-import { Box, Button, Grid, Heading,  Image,  Select, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Grid, Heading,  Image,  Select, Text, useMediaQuery, useToast } from '@chakra-ui/react'
 // import { useContext, useEffect, useState } from 'react';
 import { FaRegHeart } from "react-icons/fa";
 import { LuPlus } from "react-icons/lu";
+import { useParams } from 'react-router-dom';
+import { DataContext } from '../../context/DataProvider';
+import { useContext } from 'react';
 // import { MenSingleProductContext } from '../../context/MenSingleProvider';
 // import { useParams } from 'react-router-dom';
 
 const SingleMen = () => {
+  const [isMd] = useMediaQuery("(max-width: 730px)")
+  
+  let {id}= useParams();
+  console.log(id)
 
-  // let {mensData}= useContext(MenSingleProductContext);
-  // let {id}= useParams();
+  let { Data, setData } = useContext(DataContext);
+
+  let filtered= Data.men.filter((elem)=>{
+    if(elem.id==id){
+      return elem;
+    }
+  })
+
+
+
   // let [filtered, setFiltered]= useState({
   //           id: 6,
   //           img: 'https://images.asos-media.com/products/the-north-face-half-dome-logo-tote-bag-in-off-white/205823637-1-cream?$n_480w$&wid=476&fit=constrain',
@@ -48,18 +63,18 @@ const SingleMen = () => {
 
   return (
       
-    <Grid templateColumns={'repeat(2, 1fr)'} bg={'white'} display={'flex'} justifyContent={'space-evenly'} w={'100%'} pt={'2rem'}>
+    <Box  bg={'white'} display={'flex'} flexDirection={isMd? 'column':'row'} alignItems={'center'} justifyContent={'space-evenly'} w={'100%'} pt={isMd? '0.7rem':'2rem'}>
 
-    <Box bg={'yellow'} w={'33rem'} h={'36rem'} overflow={'hidden'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-    <Image src={singleMenObj.img} w={'100%'}  />
+    <Box w={isMd? '90%':'33rem'} h={isMd? '28rem':'36rem'} overflow={'hidden'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+    <Image src={filtered[0].img} w={'100%'}  />
     </Box>
     
-    <Box w={'22rem'} h={'29rem'} display={'flex'} flexDirection={'column'} justifyContent={'space-evenly'} >
+    <Box w={isMd? '90%':'22rem'} h={'29rem'} display={'flex'} flexDirection={'column'} justifyContent={'space-evenly'} >
     <Text>
-    {singleMenObj.para}
+    {filtered[0].para}
     </Text>
     
-    <Heading as='h1' size={'md'}>${singleMenObj.price}</Heading>
+    <Heading as='h1' size={'md'}>${filtered[0].price}</Heading>
     
     <Text>
     COLOR: Red
@@ -69,7 +84,7 @@ const SingleMen = () => {
     SIZE:
     </Text>
     
-    <Select  placeholder='Select option'>
+    <Select  placeholder='Select option' mb={'1rem'}>
     <option value="xs">XS</option>
     <option value="s">S</option>
     <option value="m">M</option>
@@ -115,7 +130,7 @@ const SingleMen = () => {
     </Box>
     
     </Box>
-    </Grid>
+    </Box>
       
    
   )

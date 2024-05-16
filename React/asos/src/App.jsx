@@ -13,6 +13,7 @@ import MensHome from './pages/Mens/MensHome'
 import Bag from './pages/Bag/Bag'
 import Payment from './pages/Bag/Payment'
 import PaymentRoute from './Routes/PaymentRoute'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/payment' element={<PaymentRoute><Payment /></PaymentRoute>} />
         
       </Routes>
+      <Footer />
     </Box>
   )
 }

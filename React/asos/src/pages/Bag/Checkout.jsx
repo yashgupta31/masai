@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
-import { Box, Button, Divider, Heading, IconButton, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Divider, Heading, IconButton, Image, Text, useMediaQuery } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom';
 
 const Checkout = () => {
+    const [isBase] = useMediaQuery("(max-width: 420px)")
     
-    let bagArr= JSON.parse(localStorage.getItem('asos-bag'));
-
-    console.log(bagArr)
+    let bagArr= JSON.parse(localStorage.getItem('asos-bag'))||[];
 
     let Total=0;
-    for(let i=0; i< bagArr.length; i++){
-        Total+= bagArr[i].price;
+    if(bagArr.length>0){
+        for(let i=0; i< bagArr.length; i++){
+            Total+= bagArr[i].price;
+        }
     }
-    console.log(Total)
+   
+    // console.log(Total)
 
    
 
     
   return (
-    <Box bg={'white'} w={'21rem'} h={'22rem'} p={'1.5rem'} display={'flex'} flexDirection={'column'} justifyContent={'space-evenly'}>
+    <Box bg={'white'} w={isBase? '90%':'21rem'} h={'22rem'} p={'1.5rem'} display={'flex'} flexDirection={'column'} justifyContent={'space-evenly'}>
             <Heading as='h1' size={'md'}>TOTAL</Heading>
             <Divider />
 

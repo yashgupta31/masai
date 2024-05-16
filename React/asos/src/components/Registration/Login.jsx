@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, Radio, RadioGroup, Stack, Text, useMediaQuery, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { FcGoogle } from "react-icons/fc";
@@ -20,6 +20,10 @@ const Login = () => {
   let signup = JSON.parse(localStorage.getItem('asos-signup')) || [];
   let toast = useToast()
   let navigate= useNavigate()
+  const [isLg] = useMediaQuery("(min-width: 1024px)")
+  const [isBelowLg]= useMediaQuery("(max-width: 1024px)")
+  const [isMd] = useMediaQuery("(min-width: 768px)")
+  const [isSm]= useMediaQuery("(max-width: 480px)")
 
   let handleSubmit = (e) => {
     e.preventDefault();
@@ -72,10 +76,10 @@ const Login = () => {
     <Box bg={'#EEEEEE'} display={'flex'} flexDirection={'column'} alignItems={'center'} pt={'3rem'}>
       {/* <NavLink to={'/login'}>login</NavLink> */}
       <Image src={"https://logo-logos.com/2016/10/Asos_logo.png"} w={'7rem'} />
-      <Box bg={'white'} w={'43vw'} p={'1.5rem'} mt={'1rem'} textAlign={'center'}>
+      <Box bg={'white'}  w={isSm? '100%' :isBelowLg? '80%':'37vw'} p={'1.5rem'} mt={'1rem'} textAlign={'center'}>
         <Stack direction='row' h={'4rem'} justifyContent={'space-around'} alignItems={'center'} fontSize={'1.2rem'} mb={'3rem'}>
-          <NavLink to={'/signup'}><Box p={'1rem 0rem'} w={'18rem'}>Signup</Box></NavLink>
-          <NavLink to={'/login'}><Box p={'1rem 0rem'} w={'18rem'} borderBottom={'1.7px solid blue'}>login</Box></NavLink>
+          <NavLink style={{width: '49%'}} to={'/signup'}><Box p={'1rem 0rem'} w={'100%'}>Signup</Box></NavLink>
+          <NavLink style={{width: '49%'}} to={'/login'}><Box p={'1rem 0rem'} w={'100%'} borderBottom={'1.7px solid blue'}>login</Box></NavLink>
 
         </Stack>
 
@@ -92,10 +96,17 @@ const Login = () => {
           </form>
 
           <Heading as='h1' size={'md'} p={'3rem'}>SIGN IN WITH...</Heading>
-          <Grid templateColumns='repeat(3, 1fr)' gap={6} p={'0rem 3rem'} mb={'1rem'} h={'3.5rem'}>
+          {/* <Grid templateColumns='repeat(3, 1fr)' gap={6} p={'0rem 3rem'} mb={'1rem'} h={'3.5rem'}>
             <GridItem display={'flex'} alignItems={'center'} justifyContent={'space-evenly'} fontSize={'1.2rem'} h={'90%'} border={'1px solid gray'}><FcGoogle />GOOGLE</GridItem>
             <GridItem display={'flex'} alignItems={'center'} justifyContent={'space-evenly'} fontSize={'1.2rem'} h={'90%'} border={'1px solid gray'}><FaApple />APPLE</GridItem>
             <GridItem display={'flex'} alignItems={'center'} justifyContent={'space-evenly'} fontSize={'1.2rem'} h={'90%'} p={'1rem 1.3rem'} border={'1px solid gray'}><FaFacebookSquare />FACEBOOK</GridItem>
+          
+          </Grid> */}
+
+<Grid templateColumns='repeat(1, 1fr)' w={'100%'} gap={6} p={'0rem 3rem'} mb={'1.2rem'} >
+            <GridItem display={'flex'} alignItems={'center'} w={'100%'}  fontSize={isSm || isMd? '1rem':'1.4rem'} h={'3.2rem'} border={'1px solid gray'}><FcGoogle style={{marginLeft:'1.6rem', marginRight: '1rem'}}  />GOOGLE</GridItem>
+            <GridItem display={'flex'} alignItems={'center'}  w={'100%'} fontSize={isSm || isMd? '1rem':'1.4rem'} h={'3.2rem'} border={'1px solid gray'}><FaApple style={{marginLeft: '1.6rem', marginRight:'1rem'}}   />APPLE</GridItem>
+            <GridItem display={'flex'} alignItems={'center'}  w={'100%'} fontSize={isSm || isMd? '1rem':'1.4rem'} h={'3.2rem'} border={'1px solid gray'}><FaFacebookSquare style={{marginLeft: '1.6rem', marginRight: '1rem'}}   />FACEBOOK</GridItem>
           </Grid>
 
 

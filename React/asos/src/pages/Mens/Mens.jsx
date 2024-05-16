@@ -8,7 +8,7 @@ let types=[
     about: 'Vacation vibes'
   },
   {
-    img: 'https://content.asos-media.com/-/media/homepages/mw/2024/may/02/homepage/mw/mw_global_grandpa_core_moment_870x1110.jpg',
+    img: 'https://content.asos-media.com/-/media/homepages/mw/2024/may/13-gbl/no-border/moment/mw_global_couture_club_moment_870x1110.jpg',
     title: 'GRANDPA CORE',
     about: "Throwback 'fits"
   },
@@ -18,7 +18,7 @@ let types=[
     about: 'A summer must-have'
   },
   {
-    img: 'https://content.asos-media.com/-/media/homepages/mw/2024/may/02/homepage/mw/mw_global_stripes_moment_870x1110.jpg',
+    img: 'https://content.asos-media.com/-/media/homepages/mw/2024/may/13-gbl/no-border/moment/mw_global_occasionwear_moment_870x1110.jpg',
     title: 'TRENDING: STRIES',
     about: 'Sunny-season striples'
   }
@@ -67,6 +67,8 @@ const Mens = () => {
 
       <Text fontSize={'sm'}>Limited time only. Selected styles marked down on site.</Text>
     </Box>
+
+   
     </Box>
   )
 }

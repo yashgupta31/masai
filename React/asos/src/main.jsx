@@ -4,14 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom'
-import {MenSingleProvider} from './context/MenSingleProvider'
+import {DataProvider} from './context/DataProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <ChakraProvider>
-  <MenSingleProvider>
+  <DataProvider>
   <App />
-  </MenSingleProvider>
+  </DataProvider>
   </ChakraProvider>
   </BrowserRouter>,
 )

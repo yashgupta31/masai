@@ -10,7 +10,7 @@ const Checkout = () => {
     let Total=0;
     if(bagArr.length>0){
         for(let i=0; i< bagArr.length; i++){
-            Total+= bagArr[i].price;
+            Total+= Number(bagArr[i].price)* Number(bagArr[i].quantity) ;
         }
     }
    

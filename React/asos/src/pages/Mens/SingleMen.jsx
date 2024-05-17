@@ -46,8 +46,10 @@ const SingleMen = () => {
   let bagArr= JSON.parse(localStorage.getItem('asos-bag'))||[]
   let toast= useToast()
   let handleBag=()=>{
+   singleMenObj={...singleMenObj, quantity: 1}
     bagArr=[...bagArr, singleMenObj]
     localStorage.setItem('asos-bag', JSON.stringify(bagArr));
+    
     toast(
       {
         title: 'Item Added In Bag',

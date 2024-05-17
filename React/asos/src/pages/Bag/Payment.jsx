@@ -13,6 +13,13 @@ const Payment = () => {
     // const [isMd] = useMediaQuery("(max-width: 730px)")
     let bagArr= JSON.parse(localStorage.getItem('asos-bag'))|| [];
 
+    let Total=0;
+    if(bagArr.length>0){
+        for(let i=0; i< bagArr.length; i++){
+            Total+= Number(bagArr[i].price)* Number(bagArr[i].quantity) ;
+        }
+    }
+
     let handleOrder=(e)=>{
         e.preventDefault();
         setIsOrdered(true);
@@ -27,8 +34,6 @@ const Payment = () => {
         // }, 2050);
 
         localStorage.setItem('asos-bag', JSON.stringify([]));
-
-
     }
     return (
 
@@ -77,14 +82,14 @@ WebkitLineClamp={2}>{elem.para}</Text>
             isMd &&
             <Box display={'flex'} justifyContent={'space-between'} mb={'0.8rem'}>
             <Text>Subtotal</Text>
-            <Text>$29</Text>
+            <Text>${Total}</Text>
         </Box>
         }
         
 
         <Box display={'flex'} justifyContent={'space-between'}>
             <Heading as='h2' size={'md'}>TOTAL TO PAY</Heading>
-            <Heading as='h2' size={'md'}>$66</Heading>
+            <Heading as='h2' size={'md'}>${Total}</Heading>
         </Box>
 
 

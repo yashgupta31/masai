@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Heading, IconButton, Image, Text, useMediaQuery } from '@chakra-ui/react'
+import { Box, Button, Divider, Heading, IconButton, Image, Select, Text, useMediaQuery } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
@@ -11,6 +11,7 @@ const Bag = () => {
   const [isSm] = useMediaQuery("(max-width: 720px)")
 
     let [bagArr, setBagArr]= useState(JSON.parse(localStorage.getItem('asos-bag'))||[])
+    console.log(bagArr)
     // let [updated, setUpdated]= useState()
     let handleDelete=(id)=>{
         let newArr= bagArr.filter((elem)=>{
@@ -18,6 +19,27 @@ const Bag = () => {
         })
         setBagArr(newArr)
         localStorage.setItem('asos-bag', JSON.stringify(newArr))
+    }
+
+    // let handleChange=(id, value)=>{
+    //     for(let i=0; i<bagArr.length; i++){
+    //         if(bagArr[id]=== id){
+    //             setBagArr([...bagArr, {...bagArr[i], quantity: bagArr[i].quantity + value}])
+    //             localStorage.setItem('asos-bag', JSON.stringify(bagArr))
+    //         }
+    //     }
+        
+    // }
+
+    let handleChange = (id, value) => {
+        let newBagArr = bagArr.map((item) => {
+            if (item.id === id) {
+                return { ...item, quantity: parseInt(value) }
+            }
+            return item;
+        });
+        setBagArr(newBagArr)
+        localStorage.setItem('asos-bag', JSON.stringify(newBagArr))
     }
 
 
@@ -37,9 +59,13 @@ const Bag = () => {
                 <Text>{elem.para}</Text>
                 <Text>SIZE:</Text>
                 <Box display={'flex'} alignItems={'center'} justifyContent={'space-evenly'}  w={'7rem'}>
-                <IconButton size={'sm'} icon={<HiMiniMinus />} />
-                <Text fontSize={'1.4rem'}>1</Text>
-                <IconButton size={'sm'} icon={<HiMiniPlus />} />
+                <Select value={elem.quantity} onChange={(e)=> handleChange(elem.id, e.target.value)}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+                </Select>
                 </Box>
                 
             </Box>

@@ -9,20 +9,21 @@ import Signup from './components/Registration/Signup'
 import Login from './components/Registration/Login'
 import Products from './pages/Mens/Products'
 import SingleMen from './pages/Mens/SingleMen'
-import MensHome from './pages/Mens/MensHome'
+// import MensHome from './pages/Mens/MensHome'
 import Bag from './pages/Bag/Bag'
 import Payment from './pages/Bag/Payment'
 import PaymentRoute from './Routes/PaymentRoute'
 import Footer from './components/Footer'
+import MenHome from './pages/Mens/Index'
 
 
 function App() {
 
   return (
-    <Box bg={'red'}>
+    <Box>
       <Navbar />
       <Routes>
-        <Route path='/' element={<MensHome />} />
+        <Route path='/' element={<MenHome />} />  {/*this is Index.jsx file of Men */}
         <Route path='/womens' element={<Womens />} />
         <Route path='/mens' element={<Mens />} />
         <Route path='/signup' element={<Signup />} />

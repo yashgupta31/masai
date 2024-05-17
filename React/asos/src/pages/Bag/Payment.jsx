@@ -22,13 +22,17 @@ const Payment = () => {
             navigate('/')
         }, 2000);
 
+        // setTimeout(() => {
+        //     navigate('/')
+        // }, 2050);
+
         localStorage.setItem('asos-bag', JSON.stringify([]));
 
 
     }
     return (
 
-        <Box bg={'red'} pt={isMd?'0rem': '0.5rem'} display={'flex'} flexDirection={isMd? 'row': 'column'} alignItems={'center'}  justifyContent={'center'} h={'82vh'}>
+        <Box bg={'white'} pt={isMd?'2rem': '0.5rem'} display={'flex'} flexDirection={isMd? 'row': 'column'} alignItems={'center'}  justifyContent={'center'} h={'82vh'} mb={'5rem'}>
 
             {/* -----------------------------Left-------------------------------------- */}
             <Box bg={isMd? 'white': '#38A169'} display={'flex'} flexDirection={'column'} w={isMd? '25rem': '100%'} p={'1.5rem'} >
@@ -89,12 +93,12 @@ WebkitLineClamp={2}>{elem.para}</Text>
             </Box>
             {/* -------------------------Right----------------------------------- */}
             <Box bg={'white'} w={isMd? '33rem': '90%'} display={'flex'} justifyContent={'center'}>
-            <form onSubmit={handleOrder} style={{backgroundColor: isOrdered? '#38A169': 'white', width: '85%', height: '34rem', padding: '1rem', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}}>
+            <form onSubmit={handleOrder} style={{backgroundColor:'white', width: '85%', height: '34rem', padding: '1rem', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}}>
                 
                      
                     
                     <Heading as='h1' size={'md'}>DELIVERY ADDRESS</Heading>
-                <FormLabel>FIRST NAME:</FormLabel>
+                <FormLabel>FIRST NAME:</FormLabel> 
                 <Input placeholder='gmail' mb={'1rem'} />
 
                 <FormLabel>LAST NAME:</FormLabel>
@@ -118,7 +122,7 @@ WebkitLineClamp={2}>{elem.para}</Text>
 
 
             {/* --------------------------Order Placed Successful popup-------------------------------- */}
-            <Box bg={'#38A169'} position={'absolute'} bottom={'0rem'} h={isOrdered?'100%': '0%'} transition={'0.3s'} w={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
+            <Box bg={'#38A169'} position={'fixed'} opacity={isOrdered? '100%':'0%'} top={'0rem'} h={isOrdered?'100vh': '0%'} zIndex={999} transition={'0.3s'} w={'100%'}  display={'flex'} alignItems={'center'} justifyContent={'center'}>
                 <Heading >Order Placed Successful!</Heading>
             </Box>
             

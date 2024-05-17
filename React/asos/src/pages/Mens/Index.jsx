@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import Mens from './Mens'
 
-const MensHome = () => {
+const Index = () => {
  
   const navigate = useNavigate();
 
@@ -14,4 +14,4 @@ const MensHome = () => {
   )
 }
 
-export default MensHome
+export default Index

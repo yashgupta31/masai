@@ -1,0 +1,200 @@
+body {
+    /* background-color: pink; */
+    background-color: #242A40;
+    color: white;
+    /* padding-top: 2rem; */
+    font-family: sans-serif;
+    /* height: 80vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#head-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* height: 70vh; */
+    /* background-color: #000E56; */
+    background-color: #242A40;
+    /* border: 1px solid black; */
+}
+
+#questionNum-graph-container {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 5rem;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 1rem;
+    margin-bottom: -2rem;
+}
+
+.graph-outer {
+    width: 100%;
+    border: 1px solid black;
+    height: 0.5rem;
+    border-radius: 7px;
+}
+
+#graph-fill {
+    width: 0%;
+    height: 100%;
+    background-color: rgb(255, 187, 0);
+}
+
+#container {
+    background-color: rgba(179, 179, 179, 0.329);
+    /* background-color: rgb(249, 50, 50); */
+    /* background-color: rgb(95, 185, 95); */
+    color: white;
+    /* color: black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* height: 30rem; */
+    width: 30rem;
+    padding: 2rem;
+    margin-top: 1.5rem;
+
+
+}
+
+.question {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+#A-btn,
+#B-btn,
+#C-btn,
+#D-btn {
+    width: 100%;
+    padding: 0.7rem 0rem;
+    outline: none;
+    border: none;
+    /* border-radius: 30px; */
+    border: 1px solid #182e7e;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.536);
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+}
+
+#A-btn:hover,
+#B-btn:hover,
+#C-btn:hover,
+#D-btn:hover {
+    background-color: rgb(206, 206, 206);
+    transition: 0.3s;
+}
+
+#A-btn:disabled,
+#B-btn:disabled,
+#C-btn:disabled,
+#D-btn:disabled {
+    color: black;
+    background-color: rgba(205, 205, 205, 0.725);
+}
+
+#A-btn:disabled:hover {
+    /* background-color: ; */
+}
+
+#next-btn {
+    padding: 0.7rem 0rem;
+    width: 35rem;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 192, 2);
+    /* align-items: end; */
+    /* align-self: flex-end; */
+    /* margin-top: 1rem;
+    margin-right: 2rem; */
+    cursor: pointer;
+    font-size: 1.1rem;
+
+}
+
+/* -----------------------------Result---------------------------------- */
+#resultContainer {
+    /* background-color: lightblue; */
+    width: 30rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 2rem; */
+}
+
+#trophy {
+    width: 10rem;
+}
+
+#excellent {
+    margin-top: -0.7rem;
+    /* margin-bottom: -0.2rem; */
+}
+
+#your-score-label {
+    margin-bottom: -1rem;
+    margin-top: -0.5rem;
+}
+
+#shareBtn {
+    padding: 0.9rem 6rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: lightcoral;
+    cursor: pointer;
+
+}
+
+/* ----------------------------------Media Query---------------------------------- */
+
+@media only screen and (max-width: 575px) {
+
+    /* Add your CSS styles for smaller screens here */
+    #head-container {
+        /* background-color: yellow; */
+        width: 98%;
+    }
+
+    #container {
+        /* background-color: red; */
+        width: 80%;
+        
+    }
+
+    #questionNum-graph-container {
+        /* background-color: orange; */
+        width: 90%;
+    }
+
+    .graph-outer {
+        /* background-color: red; */
+        width: 80%;
+    }
+
+    .question{
+        font-size: 1.3rem;
+    }
+
+    #next-btn{
+        width: 100%;
+    }
+
+    /* result */
+    #resultContainer{
+        width: 96%;
+    }
+}

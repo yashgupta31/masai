@@ -29,25 +29,23 @@ const taskReducer=(state= initialState, action)=>{
         localStorage.setItem('tasks', JSON.stringify(statusUpdated));
         return {...state, tasks: statusUpdated}
 
-        // case "EDIT_TODO":
-        // // eslint-disable-next-line no-case-declarations
-        // const edited= state.tasks.map((elem)=>(
-        //     elem.id=== action.payload.id? {...elem, name: action.payload.name}: elem
-        // ))
-        // // console.log(edited)
-        // localStorage.setItem('tasks', JSON.stringify(edited));
-        // // console.log(action.payload.name, action.payload.id)
-        // return {...state, tasks: edited}
-
+        
         case "EDIT_TODO":
+            // console.log(action.payload)
             // eslint-disable-next-line no-case-declarations
-            const edited = state.tasks.map(elem =>
+            const edited = state.tasks.map((elem) =>(
+                // console.log(typeof elem.id)
                 elem.id === action.payload.id ? { ...elem, name: action.payload.name } : elem
-            );
+                
+            ))
+            console.log(edited)
             localStorage.setItem('tasks', JSON.stringify(edited));
             return { ...state, tasks: edited };
 
-       
+        case "CLEAR_ALL_TODO":
+            localStorage.setItem('tasks', JSON.stringify([]));
+            return { ...state, tasks: [] };
+           
       default:
             return state;
     }

@@ -2,7 +2,7 @@ import React from 'react'
 import TaskInput from './components/TaskInput'
 import { Route, Routes } from 'react-router-dom'
 import TaskList from './pages/TaskList'
-import Edit from './components/Edit'
+import Edit from './pages/Edit'
 
 const App = () => {
   return (

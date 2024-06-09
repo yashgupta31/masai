@@ -25,3 +25,10 @@ export const editTodo=(name, id)=>{
         payload: {name, id}
     }
 }
+
+export const clearAllTodo=()=>{
+    return{
+        type: "CLEAR_ALL_TODO",
+        // payload: {name, id}
+    }
+}

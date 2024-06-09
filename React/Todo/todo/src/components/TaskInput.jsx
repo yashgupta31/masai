@@ -1,15 +1,18 @@
-import { Box, Button, Heading, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Input, Text, Toast, useMediaQuery, useToast } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { IoMenu } from "react-icons/io5";
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../actions';
+import { nanoid } from "nanoid";
 
 const TaskInput = () => {
 
     // let TodoArr = JSON.parse(localStorage.getItem('todo')) || [];
-    const [task, setTask]= useState('');
-    const dispatch= useDispatch();
+    const [task, setTask] = useState('');
+    const dispatch = useDispatch();
+    const toast = useToast()
+    const [isSmallerThan470] = useMediaQuery('(max-width: 470px)');
 
     // const [tasks, setTasks]= useState(TodoArr);
 
@@ -27,13 +30,13 @@ const TaskInput = () => {
     // };
 
     const lightColors = [
-        '#98D7E6', 
-        '#E46D5F', 
-        '#FFC900', 
-        '#FF1B5B', 
-        '#34D286', 
-        '#099DFE', 
-        'tomato', 
+        '#98D7E6',
+        '#E46D5F',
+        '#FFC900',
+        '#FF1B5B',
+        '#34D286',
+        '#099DFE',
+        'tomato',
         '#F24362',//pink
         '#92A4FF', //purple blue
         '#92A4FF', // green blue
@@ -46,37 +49,67 @@ const TaskInput = () => {
         const randomIndex = Math.floor(Math.random() * lightColors.length);
         return lightColors[randomIndex];
     };
-    
-    
 
-    const handleSubmit=(e)=>{
+
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // const newTask = { ...task, id: Math.random() };
-        // setTasks([...tasks, newTask])
-        // setTask({name: '', status: false})
-        dispatch(addTodo({id: Math.random(), name: task, completed: false, color: getRandomLightColor()}))
+        
+        const calender= new Date();
+       
+        const hour = calender.getHours() % 12 || 12; 
+const isAm = calender.getHours() >= 12 ? 'PM' : 'AM'; 
+        
+        
+        const date= calender.getDate();
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const month = monthNames[calender.getMonth()]; 
+        const year= calender.getFullYear();
+
+        const time= `${date} ${month} ${year} ${hour}:${calender.getMinutes()} ${isAm} `
+        console.log(time)
+        
+        if(task){
+            dispatch(addTodo({ id: nanoid(), name: task, completed: false, color: getRandomLightColor(), date: time }))
+        toast({
+            title: 'Task Added Successfully!',
+            // description: "We've created your account for you.",
+            position: 'top',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          })
+        }else{
+            toast({
+                title: 'Input is Empty',
+                // description: "We've created your account for you.",
+                position: 'top',
+                status: 'warning',
+                duration: 3000,
+                isClosable: true, 
+              })
+        }
+        
         setTask('')
-
-
-
-
     }
-    return (
-        // <Box display={'flex'} flexDirection={'column'}>
 
-        <Box h={'100vh'} w={'100vw'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
-            <Box bg={'white'} borderRadius={'0.7rem'} boxShadow='md'>
-                <Box display={'flex'} bg={'pink'} p={'0.4rem'} justifyContent={'space-evenly'} alignItems={'center'} borderRadius={'0.7rem 0.7rem 0 0'}>
-                   <NavLink to={'/alltask'}><IoMenu style={{fontSize: '1.8rem', position: 'relative', right: '3rem'}} /></NavLink> 
+    return (
+
+        <Box  bg={'#F0F4F3'} h={'100vh'} w={'100vw'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+            <Box bg={'white'} w={isSmallerThan470 && '90%'} borderRadius={'0.7rem'} boxShadow='lg'>
+                <Box display={'flex'} boxShadow={'md'} p={'0.4rem'} justifyContent={'space-evenly'} alignItems={'center'} borderRadius={'0.7rem 0.7rem 0 0'}>
+                    <NavLink to={'/alltask'}><IoMenu style={{ fontSize: '1.8rem', position: 'relative', right: isSmallerThan470?'1rem':'3rem' }} /></NavLink>
                     <Text fontSize={'1.8rem'} position={'relative'} right={'2rem'}>TODO APP</Text>
                 </Box>
-                <form onSubmit={(e)=> handleSubmit(e)} style={{ width: '28rem', height: '10rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', padding: '2rem' }}>
-                    <Input placeholder='Enter Task Name' onChange={(e)=> setTask(e.target.value)} value={task} size='lg'  />
-                    <Button w={'100%'} type='submit' size='lg' colorScheme='yellow'>ADD TASK</Button>
+                <form onSubmit={(e) => handleSubmit(e)} style={{ width: isSmallerThan470? '100%':'28rem', height: '14rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', padding: '2rem' }}>
+                    <Input placeholder='Enter Task Name' onChange={(e) => setTask(e.target.value)} value={task} size='lg' />
+                    <Button w={'100%'} type='submit' size='lg' bg={'#50C2C9'} colorScheme='#50C2C9'>ADD TASK</Button>
                 </form>
             </Box>
         </Box>
-        // </Box>
     )
 }
 

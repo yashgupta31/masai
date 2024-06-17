@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "build": "^0.1.4",
     "framer-motion": "^11.2.10",
     "nanoid": "^5.0.7",
     "react": "^18.2.0",

@@ -42,7 +42,15 @@ const TaskInput = () => {
         '#92A4FF', // green blue
         '#FEBA57', //yellow
         '#FDD3E7', //pink
-        '#08A497' //blue green
+        '#08A497',//blue green
+        '#86615C' , //brown
+        '#1F2D4E', //violet
+        '#B0C35C', //lightgreen
+        '#AD6A6C', //darkpink
+        '#B58DB6', //purple
+        '#A4B494', //lightgreen
+        '#616283', //ultraviolete
+        '#374A67'
     ];
 
     const getRandomLightColor = () => {
@@ -70,7 +78,6 @@ const isAm = calender.getHours() >= 12 ? 'PM' : 'AM';
         const year= calender.getFullYear();
 
         const time= `${date} ${month} ${year} ${hour}:${calender.getMinutes()} ${isAm} `
-        console.log(time)
         
         if(task){
             dispatch(addTodo({ id: nanoid(), name: task, completed: false, color: getRandomLightColor(), date: time }))
@@ -106,7 +113,7 @@ const isAm = calender.getHours() >= 12 ? 'PM' : 'AM';
                 </Box>
                 <form onSubmit={(e) => handleSubmit(e)} style={{ width: isSmallerThan470? '100%':'28rem', height: '14rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', padding: '2rem' }}>
                     <Input placeholder='Enter Task Name' onChange={(e) => setTask(e.target.value)} value={task} size='lg' />
-                    <Button w={'100%'} type='submit' size='lg' bg={'#50C2C9'} colorScheme='#50C2C9'>ADD TASK</Button>
+                    <Button w={'100%'} type='submit' size='lg' bg={'#E27169'} colorScheme='#E27169'>ADD TASK</Button>
                 </form>
             </Box>
         </Box>

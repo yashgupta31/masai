@@ -1,9 +1,10 @@
 
 const initialState= {
     tasks: JSON.parse(localStorage.getItem('tasks'))|| []
+    // theme: localStorage.getItem('theme') || 'light'
 }
 
-console.log(initialState)
+
 
 const taskReducer=(state= initialState, action)=>{
     switch(action.type){
@@ -50,6 +51,18 @@ const taskReducer=(state= initialState, action)=>{
             return state;
     }
 }
+
+// const themeReducer = (state = initialThemeState, action) => {
+//     switch (action.type) {
+//         case "TOGGLE_THEME":
+//             const newTheme = state.theme === 'light' ? 'dark' : 'light';
+//             localStorage.setItem('theme', newTheme);
+//             return { ...state, theme: newTheme };
+//         default:
+//             return state;
+//     }
+// };
+
 
 
 export default taskReducer

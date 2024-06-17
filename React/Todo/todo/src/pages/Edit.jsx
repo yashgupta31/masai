@@ -46,7 +46,7 @@ const Edit = () => {
         </Box>
         <form onSubmit={(e)=> handleSubmit(e)} style={{width: isSmallerThan470? '100%':'28rem', height: '14rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', padding: '2rem' }}>
             <Input placeholder='Enter Task Name'  size='lg' value={nameInput} onChange={(e)=> setNameInput(e.target.value)}/>
-            <Button w={'100%'} type='submit' size='lg' bg={'#50C2C9'} >UPDATE TASK</Button>
+            <Button w={'100%'} type='submit' size='lg' bg={'#E27169'} colorScheme='#E27169'>UPDATE TASK</Button>
         </form>
     </Box>
     
